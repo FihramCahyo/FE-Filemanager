@@ -5,7 +5,7 @@ const initialState = {
   data: [],
   status: 'idle',
   error: null,
-  selectedFolder: null,
+  selectedFolder: [],
 };
 
 const apiUrl = 'http://localhost:8000/api/folder';
@@ -14,6 +14,10 @@ export const fetchFolders = createAsyncThunk('folders/fetchFolders', async () =>
   const response = await axios.get(apiUrl);
   return response.data;
 });
+// export const selectFolders = createAsyncThunk('folders/selectFolders', async (id) => {
+//   const response = await axios.get(`${apiUrl}/${id}`);
+//   return response.data;
+// });
 
 const foldersSlice = createSlice({
   name: 'folders',

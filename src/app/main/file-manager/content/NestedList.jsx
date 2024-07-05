@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 const NestedList = () => {
+  
   const [openFolders, setOpenFolders] = useState({});
   const [Folder, setFolder] = useState([]);
   const dispatch = useDispatch();
@@ -35,12 +36,13 @@ const NestedList = () => {
   }, [status, dispatch]);
 
 console.log(Folder);
-const handleClick = (id) => {
-  setOpenFolders((prevOpenFolders) => ({
-    ...prevOpenFolders,
-    [id]: !prevOpenFolders[id],
-  }));
-  dispatch(selectFolder({ id }));
+const handleClick = (item) => {
+  console.log(item);
+    setOpenFolders((prevOpenFolders) => ({
+      ...prevOpenFolders,
+      [item.id]: !prevOpenFolders[item.id],
+    }));
+  dispatch(selectFolder({ item }));
 };
 
 const file = (item)=>{
@@ -56,7 +58,7 @@ const file = (item)=>{
 const coba =(item)=>{
   return item.map((folder) => (
     <div key={folder.id}>
-    <ListItemButton onClick={() => handleClick(folder.id)}>
+    <ListItemButton onClick={() => handleClick(folder)}>
       <ListItemIcon>
         <FolderIcon fontSize="small" />
       </ListItemIcon>
