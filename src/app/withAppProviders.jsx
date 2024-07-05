@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import ErrorBoundary from '@fuse/utils/ErrorBoundary';
 import AppContext from './AppContext';
 import store from './store/store';
+// import store from './main/file-manager/store/store';
 
 /**
  * A Higher Order Component that provides the necessary context providers for the app.

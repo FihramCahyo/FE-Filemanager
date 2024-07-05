@@ -4,6 +4,8 @@ import apiService from 'app/store/apiService';
 import { rootReducer } from './lazyLoadedSlices';
 import { dynamicMiddleware } from './middleware';
 
+
+
 const middlewares = [apiService.middleware, dynamicMiddleware];
 export const makeStore = (preloadedState) => {
 	const store = configureStore({
@@ -16,6 +18,8 @@ export const makeStore = (preloadedState) => {
 	setupListeners(store.dispatch);
 	return store;
 };
+
 export const store = makeStore();
 export const createAppSelector = createSelector.withTypes();
+console.log(store.getState());
 export default store;

@@ -5,7 +5,7 @@ const axiosBaseQuery =
 	() =>
 	async ({ url, method, data, params }) => {
 		try {
-			Axios.defaults.baseURL = '/api';
+			Axios.defaults.baseURL = 'http://localhost:8000/api/folder';
 			const result = await Axios({
 				url,
 				method,

@@ -4,6 +4,8 @@ import './styles/app-components.css';
 import './styles/app-utilities.css';
 import { createRoot } from 'react-dom/client';
 import App from './app/App';
+import { Provider } from 'react-redux';
+import store from './app/main/file-manager/store/store';
 // import * as serviceWorker from './serviceWorker';
 // import reportWebVitals from './reportWebVitals';
 /**
@@ -19,7 +21,11 @@ if (!container) {
  * The root component of the application.
  */
 const root = createRoot(container);
-root.render(<App />);
+root.render(
+<Provider store={store}>
+	<App />
+</Provider>
+);
 // reportWebVitals();
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -3,19 +3,21 @@ import { fuseSettingsSlice } from '@fuse/core/FuseSettings/fuseSettingsSlice';
 import { i18nSlice } from 'app/store/i18nSlice';
 import apiService from './apiService';
 import { userSlice } from '../auth/user/store/userSlice';
-// `combineSlices` automatically combines the reducers using
-// their `reducerPath`s, therefore we no longer need to call `combineReducers`.
+import folderReducer from "../main/file-manager/store/folderslice";
+
 export const rootReducer = combineSlices(
-	/**
-	 * Static slices
-	 */
-	userSlice,
-	fuseSettingsSlice,
-	i18nSlice,
-	/**
-	 * Dynamic slices
-	 */
-	{
-		[apiService.reducerPath]: apiService.reducer
-	}
+  /**
+   * Static slices
+   */
+  userSlice,
+  fuseSettingsSlice,
+  i18nSlice,
+  { folder: folderReducer }, // Make sure folderReducer is correctly imported and defined
+  /**
+   * Dynamic slices
+   */
+  {
+    [apiService.reducerPath]: apiService.reducer,
+  }
 ).withLazyLoadedSlices();
+
